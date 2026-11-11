@@ -134,7 +134,7 @@
     document.title=r.brand+" · "+r.month+" · Informe de Mercadeo";
     var P=r.photos, D=P.dividers||[], T=r.titles||{}, mes=r.month.split(" ")[0].toLowerCase(), h="";
     h+='<header class="hero"><img class="bg" src="'+esc(P.hero)+'" alt="'+esc(P.heroAlt||r.brand)+'" fetchpriority="high"'+(P.heroPos?' style="object-position:'+esc(P.heroPos)+'"':'')+'><div class="content">'+
-       (P.logo?'<img class="logo" src="'+esc(P.logo)+'" alt="Logo '+esc(r.brand)+'">':'')+
+       /* Sin logo en el hero: la marca aparece una sola vez, en el título */
        '<div class="eyebrow">Informe mensual de Mercadeo</div><h1>'+esc(r.brand)+'</h1><div class="sub">'+esc(r.month)+'</div><div class="line">'+esc(r.period)+'</div></div><div class="scrollcue" aria-hidden="true"></div></header>';
     // Otras marcas del mismo grupo (propiedad)
     var grp=window.groupOf?groupOf(b):null, sib=grp?grp.brands.filter(function(x){return x!==b;}):[];
