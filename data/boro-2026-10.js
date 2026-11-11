@@ -7,10 +7,10 @@ window.REPORTS["boro/2026-10"] = {
   "light": "#D2B9A4"
  },
  "photos": {
-  "hero": "assets/img/boro-hero.jpg",
-  "heroAlt": "Boro, restaurante de Wake Medellín",
+  "hero": "assets/img/boro-hero-plato.jpg",
+  "heroAlt": "Plato de Boro: carne a la parrilla con acelgas y zanahoria",
   "logo": "assets/img/boro-logo.png",
-  "card": "assets/img/boro-card.jpg",
+  "card": "assets/img/boro-card-plato.jpg",
   "dividers": [
    {
     "src": "assets/img/boro-d1.jpg",
@@ -18,8 +18,8 @@ window.REPORTS["boro/2026-10"] = {
     "caption": "Cocina contemporánea con origen colombiano."
    },
    {
-    "src": "assets/img/boro-d2.jpg",
-    "alt": "El chef Jaime Rodríguez en Boro",
+    "src": "assets/img/boro-d2-ingredientes.jpg",
+    "alt": "Pétalos e ingredientes de la cocina de Boro",
     "caption": ""
    },
    {

@@ -7,10 +7,10 @@ window.REPORTS["sastra/2026-10"] = {
   "light": "#B9C1CC"
  },
  "photos": {
-  "hero": "assets/img/sastra-hero.jpg",
-  "heroAlt": "Sastra Longevity Club",
+  "hero": "assets/img/sastra-hero-espacio.jpg",
+  "heroAlt": "Zona de cold plunge de Sastra con vista a Medellín",
   "logo": "assets/img/sastra-logo.png",
-  "card": "assets/img/sastra-card.jpg",
+  "card": "assets/img/sastra-card-espacio.jpg",
   "dividers": [
    {
     "src": "assets/img/sastra-d1.jpg",
