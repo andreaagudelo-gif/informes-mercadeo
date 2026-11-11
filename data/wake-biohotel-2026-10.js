@@ -118,13 +118,14 @@ window.REPORTS["wake-biohotel/2026-10"] = {
     "Eventos en Meta: campaña nueva de conversaciones de eventos (_eventos_all, $0,98 M, 93 conversaciones); el conjunto de BioHotel invirtió $283.129 y generó 71 conversaciones.",
     "Canal web: subió a 17,8% de participación según IDeaS (+2,0 pp).",
   ],
-  learnings: [
-    { n: "01", title: "BioHotel perdió un tercio del tráfico", status: "No funcionó",
-      text: "Las sesiones bajaron 34,5% (23.156) y las de pauta 38,9% (16.415). Google, con 2,0% más de inversión, trajo 38,4% menos sesiones; Meta, con 4,1% menos, trajo 44,6% menos. Aun así, las reservas web subieron 32,5% (102). El ROI es 17,3x con TikTok y las compartidas (19,1x con la regla de septiembre, que dio 15,8x) y el canal web subió a 17,8% según IDeaS." },
-  ],
-  actions: [
-    { n: "01", title: "Auditar el tráfico de BioHotel", text: "Con Contravía, revisar término por término en Google y creatividad por creatividad en Meta por qué cayeron las sesiones con la misma inversión. La meta de noviembre es recuperar sesiones de pauta sin bajar el ROI de 17,3x." },
-    { n: "02", title: "Más WhatsApp y eventos", text: "Repetir el email de un solo botón a WhatsApp en los envíos de noviembre de BioHotel, y medir conversaciones y CTR." },
+  /* Aprendizaje → acción: cada aprendizaje va con su próximo paso concreto */
+  insights: [
+    { n: "01", tag: "Oportunidad de mejora",
+      learning: { title: "Recuperar el tráfico de pauta", text: "Las sesiones bajaron 34,5% (23.156) y las de pauta 38,9% (16.415). Google, con 2,0% más de inversión, trajo 38,4% menos sesiones; Meta, con 4,1% menos, trajo 44,6% menos. Aun así, las reservas web subieron 32,5% (102), el ROI es 17,3x con TikTok y las compartidas (19,1x con la regla de septiembre, que dio 15,8x) y el canal web subió a 17,8% según IDeaS." },
+      action: { title: "Optimizar el tráfico de BioHotel", text: "Con Contravía, revisar término por término en Google y creatividad por creatividad en Meta cómo recuperar sesiones con la misma inversión. Meta de noviembre: más sesiones de pauta sin bajar el ROI de 17,3x." } },
+    { n: "02", tag: "A potenciar",
+      learning: { title: "WhatsApp como canal de eventos", text: "La campaña nueva de conversaciones de eventos en Meta generó 71 conversaciones para BioHotel con $283.129 de inversión en su conjunto." },
+      action: { title: "Más WhatsApp y eventos", text: "Repetir el email de un solo botón a WhatsApp en los envíos de noviembre de BioHotel, y medir conversaciones y CTR." } },
   ],
   pending: [
     "TikTok Ads del 29 al 31 de octubre, con CPC y CTR: la inversión de TikTok va con datos al 28 oct. Al llegar se recalculan la pauta y el ROI.",

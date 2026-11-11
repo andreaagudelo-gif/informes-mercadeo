@@ -59,7 +59,6 @@
   };
   function runInside(root){
     root.querySelectorAll("[data-count]").forEach(countUp);
-    root.querySelectorAll("[data-bar]").forEach(function(b){b.style.transform="none";});
   }
   function countUp(el){
     if(el.dataset.done) return; el.dataset.done=1;

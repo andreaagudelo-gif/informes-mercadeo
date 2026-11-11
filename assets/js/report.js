@@ -36,7 +36,7 @@
     for(var g=0;g<=4;g++){var x=L+(W-L-R)*g/4; s+='<line x1="'+x+'" x2="'+x+'" y1="0" y2="'+H+'" stroke="rgba(97,102,82,.15)"/><text x="'+x+'" y="'+(H+20)+'" text-anchor="middle">$'+fmtCO(g*3,0)+' M</text>';}
     ch.forEach(function(c,i){var w=(W-L-R)*c.spend/max, y=i*row+row*.28;
       s+='<text x="'+(L-10)+'" y="'+(y+row*.24)+'" text-anchor="end" dominant-baseline="middle">'+esc(c.name)+'</text>'+
-         '<g data-bar style="transform:scaleX(0);transform-origin:'+L+'px 0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><rect x="'+L+'" y="'+y+'" width="'+w.toFixed(1)+'" height="'+(row*.44).toFixed(1)+'" fill="'+cols[i%3]+'"><title>'+esc(c.name+": "+c.spendDisplay)+'</title></rect>'+
+         '<g class="bar bar-x"><rect x="'+L+'" y="'+y+'" width="'+w.toFixed(1)+'" height="'+(row*.44).toFixed(1)+'" fill="'+cols[i%3]+'"><title>'+esc(c.name+": "+c.spendDisplay)+'</title></rect>'+
          '<text x="'+(L+w+8)+'" y="'+(y+row*.24)+'" dominant-baseline="middle" style="fill:#1B1C17;font-size:12px">'+esc(c.spendDisplay)+'</text></g>';});
     return s+'</svg>';
   }
@@ -46,7 +46,7 @@
     for(var g=0;g<=4;g++){var y=H-H*g/4; s+='<line x1="'+L+'" x2="'+W+'" y1="'+y+'" y2="'+y+'" stroke="rgba(97,102,82,.15)"/><text x="'+(L-8)+'" y="'+y+'" text-anchor="end" dominant-baseline="middle">'+fmtCO(g*4000)+'</text>';}
     ch.forEach(function(c,i){var cx=L+gw*i+gw/2;
       [[c.sessionsOct,"#616652",-bw-3,"Octubre"],[c.sessionsSep,"#BDB8AA",3,"Septiembre"]].forEach(function(v){
-        var h=H*v[0]/max; s+='<g data-bar style="transform:scaleY(0);transform-origin:0 '+H+'px;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><rect x="'+(cx+v[2]).toFixed(1)+'" y="'+(H-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="'+v[1]+'"><title>'+esc(c.name+" · "+v[3]+": "+fmtCO(v[0]))+'</title></rect>'+
+        var h=H*v[0]/max; s+='<g class="bar bar-y"><rect x="'+(cx+v[2]).toFixed(1)+'" y="'+(H-h).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="'+v[1]+'"><title>'+esc(c.name+" · "+v[3]+": "+fmtCO(v[0]))+'</title></rect>'+
         '<text x="'+(cx+v[2]+bw/2).toFixed(1)+'" y="'+(H-h-6).toFixed(1)+'" text-anchor="middle" style="font-size:10px">'+fmtCO(v[0])+'</text></g>';});
       s+='<text x="'+cx+'" y="'+(H+20)+'" text-anchor="middle">'+esc(c.name)+'</text>';});
     return s+'</svg>';
@@ -107,10 +107,13 @@
     // 08 Milestones
     h+='<section class="block wrap">'+sh("08","Hitos del mes","Lo que <em>marcó</em> "+esc(r.month.split(" ")[0].toLowerCase()))+
        '<ol class="miles reveal">'+r.milestones.map(function(t,i){return '<li><span>'+String(i+1).padStart(2,"0")+'</span><div>'+esc(t)+'</div></li>';}).join("")+'</ol></section>';
-    // 09 Learnings
-    h+='<section class="block wrap" style="padding-top:0">'+sh("09","Aprendizajes y acciones","Hacia <em>el próximo mes</em>")+
-       '<div class="eyebrow">Aprendizajes</div><div class="lcards reveal">'+r.learnings.map(function(l){return '<div class="lcard"><span class="tag '+(/No funcionó/.test(l.status)&&!/\//.test(l.status)?'down':'fill')+'">'+esc(l.status)+'</span><div class="n">'+esc(l.n)+'</div><h4>'+esc(l.title)+'</h4><p>'+esc(l.text)+'</p></div>';}).join("")+'</div>'+
-       '<div class="eyebrow subhead">Acciones</div><div class="lcards reveal">'+r.actions.map(function(l){return '<div class="lcard"><div class="n">'+esc(l.n)+'</div><h4>'+esc(l.title)+'</h4><p>'+esc(l.text)+'</p></div>';}).join("")+'</div></section>';
+    // 09 Aprendizaje -> acción
+    h+='<section class="block wrap" style="padding-top:0">'+sh("09","Aprendizajes y próximos pasos","De lo aprendido <em>a la acción</em>")+
+       '<div class="insights reveal"><div class="ins-head" aria-hidden="true"><span></span><span>Aprendizaje</span><span></span><span>Próximo paso</span></div>'+
+       (r.insights||[]).map(function(x){return '<article class="ins"><div class="n">'+esc(x.n)+'</div>'+
+         '<div class="l"><span class="tag '+(x.tag==="A potenciar"?'fill':'wood')+'">'+esc(x.tag)+'</span><h4>'+esc(x.learning.title)+'</h4><p>'+esc(x.learning.text)+'</p></div>'+
+         '<div class="arrow" aria-hidden="true">→</div>'+
+         '<div class="a"><span class="mlab">Próximo paso</span><h4>'+esc(x.action.title)+'</h4><p>'+esc(x.action.text)+'</p></div></article>';}).join("")+'</div></section>';
     // Footer
     h+='<footer class="sources"><div class="wrap cols"><div><h5>Pendientes</h5>'+r.pending.map(function(p){return '<p class="pend">'+esc(p)+'</p>';}).join("")+'</div><div><h5>Fuentes</h5><p>'+esc(r.sources)+'</p></div></div>'+
        '<div class="wrap"><div class="bottom">Stay Group · Mercadeo · '+esc(r.brand)+' · '+esc(r.month)+'</div></div></footer>';

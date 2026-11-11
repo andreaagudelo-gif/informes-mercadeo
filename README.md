@@ -26,6 +26,10 @@ assets/img/           Fotos y capturas (jpg/png optimizados, < 400 KB)
    - si quieres que la portada abra en ese mes, cambia `defaultMonth` a `"2026-11"`.
 5. Si cambias fotos o capturas, súbelas a `assets/img/` (jpg, máximo ~1600 px de ancho y < 400 KB) y actualiza las rutas en `photos`, `crm.emails[].image` e `influencers[].image`.
 
+## Aprendizajes y próximos pasos
+
+En cada archivo de datos, `insights` es una lista de pares **aprendizaje → próximo paso**. Cada elemento lleva `n`, `tag` (`"Oportunidad de mejora"` o `"A potenciar"`), `learning: { title, text }` y `action: { title, text }`. Usa siempre lenguaje constructivo: "oportunidad de mejora", "a optimizar", "a potenciar".
+
 ## Agregar una marca
 
 1. La marca ya debe estar en `brands` dentro de `data/index.js` (hoy están las 6). Si es nueva, agrega `{ slug: "mi-marca", name: "Mi Marca", color: "#XXXXXX" }`.
