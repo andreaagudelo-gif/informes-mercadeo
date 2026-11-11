@@ -136,6 +136,12 @@
     h+='<header class="hero"><img class="bg" src="'+esc(P.hero)+'" alt="'+esc(P.heroAlt||r.brand)+'" fetchpriority="high"'+(P.heroPos?' style="object-position:'+esc(P.heroPos)+'"':'')+'><div class="content">'+
        (P.logo?'<img class="logo" src="'+esc(P.logo)+'" alt="Logo '+esc(r.brand)+'">':'')+
        '<div class="eyebrow">Informe mensual de Mercadeo</div><h1>'+esc(r.brand)+'</h1><div class="sub">'+esc(r.month)+'</div><div class="line">'+esc(r.period)+'</div></div><div class="scrollcue" aria-hidden="true"></div></header>';
+    // Otras marcas del mismo grupo (propiedad)
+    var grp=window.groupOf?groupOf(b):null, sib=grp?grp.brands.filter(function(x){return x!==b;}):[];
+    if(sib.length){
+      h+='<div class="siblings wrap"><span class="eyebrow">También en este grupo</span><span class="links">'+sib.map(function(x){var bb=S.brands.filter(function(y){return y.slug===x;})[0]; if(!bb) return "";
+        return isAvailable(x,m)?'<a href="'+reportUrl(x,m)+'">'+esc(bb.name)+'</a>':'<span>'+esc(bb.name)+'</span>';}).join('<i>·</i>')+'</span></div>';
+    }
     // Cifras del mes
     h+='<section class="block wrap">'+sh("Cifras del mes",T.kpis||"Lo esencial de <em>"+esc(mes)+"</em>",r.intro)+
        '<div class="grid g3 headline reveal">'+r.headline.map(function(i){return kpi(i);}).join("")+'</div></section>';

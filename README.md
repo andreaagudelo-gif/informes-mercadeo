@@ -52,6 +52,11 @@ En cada archivo de datos, `insights` es una lista de pares **aprendizaje → pr�
 
 Las marcas o meses que no están en `available` se muestran como **Próximamente**.
 
+## Grupos y caché
+
+- `groups` en `data/index.js` arma la portada por propiedad (Wake BioHotel · Silo · Sastra, Wake Medellín · Boro, Wake Living). En cada informe aparece el enlace a las otras marcas de su grupo.
+- Al publicar cambios, sube el número de `version` en `data/index.js` y el `?v=` de `index.html` e `informe.html`, para que los navegadores descarguen los archivos nuevos. Si cambias una foto, usa un nombre de archivo nuevo.
+
 ## Probar en local
 
 ```

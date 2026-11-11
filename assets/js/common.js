@@ -93,8 +93,10 @@
 /* Carga data/<marca>-<mes>.js. cb(ok) */
 window.loadReport = function(key, cb){
   if(window.REPORTS && window.REPORTS[key]) return cb(true);
-  var s=document.createElement("script"); s.src="data/"+key.replace("/","-")+".js";
+  var s=document.createElement("script"); s.src="data/"+key.replace("/","-")+".js"+(window.SITE&&SITE.version?"?v="+SITE.version:"");
   s.onload=function(){cb(!!(window.REPORTS&&window.REPORTS[key]));}; s.onerror=function(){cb(false);};
   document.head.appendChild(s);
 };
+/* Grupo por propiedad de una marca */
+window.groupOf = function(slug){ return ((window.SITE&&SITE.groups)||[]).filter(function(g){return g.brands.indexOf(slug)>-1;})[0]; };
 window.loadAll = function(keys, cb){ var n=keys.length; if(!n) return cb(); keys.forEach(function(k){loadReport(k,function(){ if(--n===0) cb(); });}); };
