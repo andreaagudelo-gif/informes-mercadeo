@@ -1,0 +1,87 @@
+/* Estilos solo de la página RRSS. No se cargan en las páginas de Informes. */
+.rrss-hero{padding-top:110px;padding-bottom:28px}
+.rrss-hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,7vw,100px);line-height:.92;letter-spacing:-.02em;margin-top:16px}
+.rrss-hero .sub{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,2.6vw,36px);color:var(--muted);margin-top:8px}
+.rrss-hero .lede{max-width:640px;margin-top:18px;color:var(--muted)}
+.rrss-meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;align-items:center}
+.chip{font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--olive-25);padding:6px 11px;border-radius:999px;color:var(--muted)}
+
+.tblwrap{overflow:auto;border:1px solid var(--olive-25);background:#fff}
+table.rrss{width:100%;border-collapse:collapse;font-size:13px;min-width:720px}
+table.rrss th{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--muted);text-align:left;padding:12px 14px;border-bottom:1px solid var(--olive-25);background:#f6f6f3;white-space:nowrap}
+table.rrss td{padding:12px 14px;border-bottom:1px solid var(--olive-10);vertical-align:middle}
+table.rrss tr:last-child td{border-bottom:0}
+table.rrss tbody tr{cursor:pointer}
+table.rrss tbody tr:hover{background:var(--olive-10)}
+table.rrss tbody tr.on{background:rgba(97,102,82,.12)}
+table.rrss .dn{color:var(--down)}
+table.rrss .up{color:var(--olive)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.brandcell{font-family:var(--serif);font-size:20px;white-space:nowrap}
+
+.callout{background:#fff;border:1px solid var(--olive-25);padding:22px 24px;margin-bottom:14px}
+.callout .lead{font-family:var(--serif);font-size:clamp(22px,2vw,28px);line-height:1.15;margin-bottom:8px}
+.callout p,.diag-text{font-size:14px;color:var(--ink)}
+.diag-text{margin:12px 0;color:var(--muted)}
+.caption{font-size:12px;color:var(--muted);margin-top:10px}
+
+.brandbar{position:sticky;top:60px;z-index:40;background:rgba(241,240,235,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--olive-25);padding:10px 0}
+.brandbar .in{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.brandbar .pill{cursor:pointer;background:#fff}
+.brandbar .pill.active{background:var(--olive);color:#fff;border-color:var(--olive)}
+
+.plat{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+@media (max-width:760px){.plat{grid-template-columns:1fr}}
+.plat .card h3{font-family:var(--serif);font-weight:400;font-size:28px;margin:8px 0 4px}
+.plat .acct{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.plat .metrics{grid-template-columns:repeat(3,1fr)}
+@media (max-width:560px){.plat .metrics{grid-template-columns:repeat(2,1fr)}}
+
+.weekchart{background:#fff;border:1px solid var(--olive-25);padding:22px;margin-top:20px}
+.weekchart h3{font-family:var(--serif);font-weight:400;font-size:22px;margin-bottom:8px}
+.weekchart svg{width:100%;height:auto;overflow:visible}
+.weekchart text{font-family:var(--sans);font-size:11px;fill:var(--muted)}
+
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.filters button{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1px solid var(--olive-25);background:transparent;cursor:pointer;color:var(--ink)}
+.filters button.on{background:var(--olive);color:#fff;border-color:var(--olive)}
+.count{font-size:12px;color:var(--muted);margin-left:8px;align-self:center}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:1100px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:800px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.gallery{grid-template-columns:1fr}}
+
+.creative{background:#fff;border:1px solid var(--olive-25);display:flex;flex-direction:column;min-width:0}
+.creative .pic{position:relative;aspect-ratio:4/5;overflow:hidden;background:#e6e5de;cursor:zoom-in}
+.creative .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.creative .ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#fff;text-align:center;padding:16px;font-size:12px}
+.creative .ph span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.creative .more{position:absolute;top:10px;right:10px;background:rgba(20,20,16,.8);color:#fff;font-size:10px;letter-spacing:.1em;padding:4px 8px;border-radius:999px}
+.creative .body{padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.creative .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.creative .when{font-size:11px;color:var(--muted);letter-spacing:.04em}
+.creative h3{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.15}
+.creative .copy{font-size:12.5px;color:var(--muted);white-space:pre-line}
+.creative .copy.clip{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.creative .morecopy{background:none;border:0;padding:0;color:var(--olive);font-size:12px;cursor:pointer;align-self:flex-start;letter-spacing:.04em}
+.creative .links{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.creative .links a{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--olive-25);padding:5px 9px;border-radius:999px}
+.creative .links a:hover{border-color:var(--olive);background:var(--olive-10)}
+
+.parrillas{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.parrillas a{font-size:13px}
+
+.pending{background:#fff;border:1px solid var(--olive-25);padding:28px}
+.pending h3{font-family:var(--serif);font-weight:400;font-size:28px;margin-bottom:8px}
+
+.cover-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--olive-25)}
+
+.creative,.callout,.weekchart,.card{break-inside:avoid;page-break-inside:avoid}
+@media print{
+  .nav,.brandbar{position:static;backdrop-filter:none}
+  .gallery{grid-template-columns:repeat(2,1fr)!important}
+  .tblwrap{overflow:visible}
+  table.rrss{min-width:0}
+}

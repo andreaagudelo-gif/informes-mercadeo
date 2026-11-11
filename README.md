@@ -5,14 +5,17 @@ Sitio estático (HTML, CSS y JavaScript, sin compilación) con los informes mens
 ## Estructura
 
 ```
-index.html            Portada del mes, con una tarjeta por marca
+index.html            Portada del mes, con una tarjeta por marca y enlace a RRSS
 informe.html          Página de informe (?marca=wake-biohotel&mes=2026-10)
+rrss.html             Tablero orgánico de redes (?marca=wake-biohotel)
 404.html              Redirige a la portada
 data/index.js         Registro de marcas, meses e informes publicados
-data/<marca>-<mes>.js Datos de un informe (uno por marca y mes)
-assets/css/styles.css Estilos
-assets/js/            common.js (nav, formato, animaciones), cover.js, report.js
+data/<marca>-<mes>.js Datos de un informe de mercadeo (uno por marca y mes)
+data/rrss.js          Datos del tablero orgánico RRSS (se regenera; no editar a mano)
+assets/css/           styles.css (sitio) y rrss.css (solo la página RRSS)
+assets/js/            common.js, cover.js, report.js, rrss.js
 assets/img/           Fotos y capturas (jpg/png optimizados, < 400 KB)
+assets/img/rrss/      Miniaturas de las creatividades del tablero RRSS
 ```
 
 ## Agregar un mes nuevo (por ejemplo, noviembre 2026 de Wake BioHotel)
@@ -55,7 +58,12 @@ Las marcas o meses que no están en `available` se muestran como **Próximamente
 ## Grupos y caché
 
 - `groups` en `data/index.js` arma la portada por propiedad (Wake BioHotel · Silo · Sastra, Wake Medellín · Boro, Wake Living). En cada informe aparece el enlace a las otras marcas de su grupo.
-- Al publicar cambios, sube el número de `version` en `data/index.js` y el `?v=` de `index.html` e `informe.html`, para que los navegadores descarguen los archivos nuevos. Si cambias una foto, usa un nombre de archivo nuevo.
+- Al publicar cambios, sube el número de `version` en `data/index.js` y el `?v=` de `index.html`, `informe.html` y `rrss.html`, para que los navegadores descarguen los archivos nuevos. Si cambias una foto, usa un nombre de archivo nuevo.
+
+## Tablero orgánico RRSS
+
+La página `rrss.html` muestra las métricas orgánicas de Facebook e Instagram y las creatividades de la parrilla, por marca. **Los datos no van en el HTML**: están en `data/rrss.js` y las miniaturas en `assets/img/rrss/`. Para actualizarlo cada lunes o en el cierre de mes, sigue `/workspace/rrss/SITIO.md` y corre `python3 /workspace/rrss/build_rrss_data.py`. No hace falta editar `rrss.html` ni `assets/js/rrss.js` si solo cambian las cifras o las piezas.
+
 
 ## Probar en local
 

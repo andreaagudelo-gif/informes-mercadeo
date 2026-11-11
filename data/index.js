@@ -2,7 +2,7 @@
 window.SITE = {
   title: "Stay Group · Informes de Mercadeo",
   /* Cambia este valor al publicar para que los navegadores no usen archivos viejos (también en index.html e informe.html) */
-  version: "20261111-1505",
+  version: "20261111-1835",
   brands: [
     { slug: "wake-biohotel", name: "Wake BioHotel", color: "#616652" },
     { slug: "silo",          name: "Silo",          color: "#A03914" },

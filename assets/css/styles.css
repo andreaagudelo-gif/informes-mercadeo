@@ -273,3 +273,7 @@ footer .bottom{border-top:1px solid var(--olive-25);margin-top:36px;padding-top:
   .scrollcue::after{animation:none}
 }
 @media print{.js-anim .reveal{opacity:1!important;transform:none!important}.nav{position:static}}
+
+/* Portada: segundo botón hacia el tablero RRSS */
+.cover-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--olive-25)}

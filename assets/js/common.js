@@ -15,11 +15,12 @@
 
   window.renderNav = function(){
     var b=window.currentBrand, m=window.currentMonth;
+    var isRrss=/rrss\.html$/.test(location.pathname);
     var pills=S.brands.map(function(x){
       var on=isAvailable(x.slug,m);
       if(!on) return '<span class="pill soon" title="Próximamente">'+esc(x.name.replace("Wake ",""))+'</span>';
-      return '<a class="pill'+(x.slug===b?' active':'')+'" href="'+reportUrl(x.slug,m)+'">'+esc(x.name.replace("Wake ",""))+'</a>';
-    }).join("");
+      return '<a class="pill'+(x.slug===b && !isRrss?' active':'')+'" href="'+reportUrl(x.slug,m)+'">'+esc(x.name.replace("Wake ",""))+'</a>';
+    }).join("")+'<a class="pill'+(isRrss?' active':'')+'" href="rrss.html">RRSS</a>';
     var opts=S.months.map(function(x){
       var any=S.available.some(function(k){return k.split("/")[1]===x.slug;});
       return '<option value="'+x.slug+'"'+(x.slug===m?' selected':'')+(any?'':' disabled')+'>'+esc(x.label)+(any?'':' · Próximamente')+'</option>';
@@ -31,7 +32,7 @@
       '<div class="pills">'+pills+'</div>'+
       '<select class="month" aria-label="Mes del informe">'+opts+'</select>'+
       '<button class="burger" aria-label="Menú" aria-expanded="false">☰</button></div></nav>'+
-      '<div class="mobile-menu" id="mm"><a href="index.html">Portada</a>'+mob+'<select class="month" aria-label="Mes del informe">'+opts+'</select></div>';
+      '<div class="mobile-menu" id="mm"><a href="index.html">Portada</a>'+mob+'<a href="rrss.html">RRSS orgánicas</a><select class="month" aria-label="Mes del informe">'+opts+'</select></div>';
     document.body.insertAdjacentHTML("afterbegin",html);
     var burger=document.querySelector(".burger"), mm=document.getElementById("mm");
     burger.addEventListener("click",function(){var o=mm.classList.toggle("open");burger.textContent=o?"✕":"☰";burger.setAttribute("aria-expanded",o);});
@@ -82,12 +83,20 @@
   }
 
   window.initLightbox = function(){
-    var lb=document.createElement("div"); lb.className="lb"; lb.innerHTML='<button type="button">Cerrar ✕</button><img alt="">';
-    document.body.appendChild(lb);
-    lb.addEventListener("click",function(){lb.classList.remove("open");});
-    document.addEventListener("keydown",function(e){if(e.key==="Escape")lb.classList.remove("open");});
-    document.querySelectorAll(".shot").forEach(function(s){s.addEventListener("click",function(){
-      var i=s.querySelector("img"); lb.querySelector("img").src=i.src; lb.querySelector("img").alt=i.alt; lb.classList.add("open"); lb.scrollTop=0;});});
+    var lb=document.querySelector(".lb");
+    if(!lb){
+      lb=document.createElement("div"); lb.className="lb"; lb.innerHTML='<button type="button">Cerrar ✕</button><img alt="">';
+      document.body.appendChild(lb);
+      lb.addEventListener("click",function(){lb.classList.remove("open");});
+      document.addEventListener("keydown",function(e){if(e.key==="Escape")lb.classList.remove("open");});
+    }
+    document.querySelectorAll(".shot").forEach(function(s){
+      if(s.dataset.lb) return; s.dataset.lb=1;
+      s.addEventListener("click",function(){
+        var i=s.querySelector("img"); if(!i) return;
+        lb.querySelector("img").src=i.src; lb.querySelector("img").alt=i.alt; lb.classList.add("open"); lb.scrollTop=0;
+      });
+    });
   };
 })();
 /* Carga data/<marca>-<mes>.js. cb(ok) */
